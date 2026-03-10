@@ -7,7 +7,7 @@
     <style>
         .main text {
             color: red;
-            font size: larger;
+            font-size: larger;
         }
 
     </style>
@@ -18,25 +18,61 @@
 <body>
     <h1 id="MainHeader">JavaScript Day 1 </h1>
     <p id="intro"><p></p>
+
+
+     <lable for= "viewername">Enter your name:</label>
+     <input type="text" id="viewerID" name="viewerName"><br><br>
+
      <button onclick="displayWelcome()">Welcome</button>
+     <button onclick="resetText()">Reset </button>
+     <br><br>
 
      <script>
         function displayWelcome(){
-         // You can get the element by id
+       console.log("Reached display Welcome");
+        
+            // You can get the element by id
+            viewerName = document.getElementById("viewerID").value; // The name entered
+            welcomeMessage = "Welcome " + viewerName + " to JavaScript Day 1!";
+
             // We make a reference to it if we want to use it more than once    
-            mainHeader = document.getElementById("MainHeader");
-            mainHeader.innerHTML = "Welcome to JavaScript Day 1!";
-            mainHeader.style.color = "blue";    
+            // keyword const means that the reference is valid inside this function only
+            
+            const mainHeader = document.getElementById("MainHeaderID");
+            
+            mainHeader.innerHTML = welcomeMessage;
+            mainHeader.style.color = "blue";    // style = "color: blue; background-color: yellow;"
             mainHeader.style.backgroundColor = "yellow";
-            mainHeader.style.color = "red";
-            mainHeader.innerHTML = "Welcome to Day 1 of JavaScript!";
+            
+            
             // You can also get the element id and change property in one line
-            document.getElementById("intro").innerHTML = "This is the first day of learning JavaScript. We will learn the basics of JavaScript and how to manipulate the DOM."
-            document.getElementById("intro").classList.add("main text");
+            document.getElementById("introID").innerHTML = "This is the first day of learning JavaScript. We will learn the basics of JavaScript and how to manipulate the DOM."
+
+            // We can style the element by adding a CSS class 
+            document.getElementById("introID").classList.add("main-text");
+          
         }
- 
+        
+        function resetText(){
+            console.log("Reached resetText");
+            // Reset header back to it orginal text
+            const mainHeader = document.getElementById("MainHeaderID");
+            mainHeader.innerHTML = "JavaScript Day 1";
+            mainHeader.style.color = "black";
+            mainHeader.style.backgroundColor = "white";
+
+            
+            // Reset the intro text and remove the CSS class
+            document.getElementById("introID").innerHTML = "";
+            document.getElementById("introID").classList.remove("main-text");
+            
+            // Clear the input field
+            document.getElementById("viewerID").value = "";
+        }
 </script>
+
+   
+
 </body>
-</html>.innerHTML
-    
+</html>   
 
